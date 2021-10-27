@@ -1,0 +1,65 @@
+﻿
+@{
+    ViewBag.Title = "Test";
+    Layout = null;
+}
+
+<h2>Registration Form</h2>
+
+<body>
+    <form id="form1">
+        <div>
+            <input type="text" id="n1" />
+            <input type="text" id="n2" />
+            <input type="text" id="n3" />
+            <input type="text" id="n4" />
+            <input type="text" id="n5" />
+            <input type="text" id="n6" />
+            <input type="text" id="n7" />
+
+
+
+
+
+
+            <input type="button" id="btn" />
+        </div>
+    </form>
+</body>
+
+
+<script src="~/Scripts/jquery-3.4.1.min.js"></script>
+<script src="~/Scripts/jquery-3.4.1.js"></script>
+
+<script>
+    $(document).ready(function () {
+        $('#btn').click(function () {
+
+            var txtName = $("#n1").val();
+            var txtAdd = $("#n2").val();
+            var txtEmail = $("#n3").val();
+            var txtGender = $("#n4").val();
+            var txtPhone = $("#n5").val();
+            var txtUsername = $("#n6").val();
+            var txtPassword = $("#n7").val();
+
+
+
+
+
+
+
+            $.ajax({
+                url: 'Home/SaveEmpData?firstName=' + txtName + '&address=' + txtAdd + '&email=' + txtEmail + '&gender=' + txtGender + '&Phone=' + txtPhone + '&Username=' + txtUsername + '&Password=' + txtPassword,
+                success: function (data) {
+                    if (data.status == "ok") {
+                        $("#results").html(data.result);
+                    }
+                }
+            });
+        });
+    });
+</script>
+
+
+
